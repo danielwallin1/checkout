@@ -11,6 +11,11 @@ Checkout flöde för hjärnfonden.
 Separat modul för respektive steg i checkout flödet.
 Redux kommunicerar mellan moduler
 
+## Ej implementerat (för att hålla nere scope)
+- validering
+- betalning (formulärsfält)
+- responsiv layout
+
 ## Screenshots
 ![checkout view](./static/images/checkout1.png)
 ![checkout view](./static/images/checkout2.png)
