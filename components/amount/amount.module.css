@@ -1,0 +1,106 @@
+.button {
+  display: block;
+  background-color: #f3dcdc;
+  width: 100%;
+  height: 50px;
+  border: none;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button--active {
+  background-color: #01a46d;
+  color: #fff;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-button {
+  position: relative;
+  display: block;
+  height: 50px;
+  font-size: 22px;
+  border: 1px solid #333;
+  margin: 0 auto 30px;
+  padding: 0 50px 0 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.step-button:after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 17px;
+  margin-left: 5px;
+  height: 1.0625rem;
+  width: 1.0625rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://www.hjarnfonden.se/next/images/ArrowLink.svg");
+  filter: invert(68%) sepia(91%) saturate(3225%) hue-rotate(305deg) brightness(101%) contrast(111%);
+}
+
+.amount-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #333;
+}
+
+.amount-label,
+.amount-label-active {
+  border: 1px solid #333;
+  height: 50px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.amount {
+  padding: 0 20px;
+  line-height: 2;
+}
+
+.amount-label-active,
+.amount-label:hover {
+  background-color: #ff6695;
+}
+
+.step-header {
+  font-weight: normal;
+  font-size: 24px;
+}
+
+.amount-info {
+  font-size: 18px;
+  margin: 35px 20px;
+}
+
+.amount-text {
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.edit-btn {
+  text-decoration: underline;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.amount-prefix {
+  font-weight: 500;
+  margin-right: 5px;
+}

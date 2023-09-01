@@ -1,0 +1,78 @@
+{
+  "steps": {
+    "memorial": {
+      "id": 1,
+      "label": "1. Minnesblad"
+    },
+    "amounts": {
+      "id": 2,
+      "label": "2. Gåvobelopp"
+    },
+    "contact": {
+      "id": 3,
+      "label": "3. Kontaktuppgifter"
+    },
+    "payment": {
+      "id": 4,
+      "label": "4. Betalsätt"
+    }
+  },
+  "flowers": [
+    {
+      "file": "ros",
+      "name": "Röd ros"
+    },
+    {
+      "file": "lilja",
+      "name": "Lilja"
+    },
+    {
+      "file": "ros2",
+      "name": "Gul ros"
+    },
+    {
+      "file": "magnolia",
+      "name": "Magnolia"
+    }
+  ],
+  "persons": [
+    {
+      "name": "Eva Björnson",
+      "lifespan": "07 okt 1951 - 24 aug 2023",
+      "city": "Göteborg",
+      "funeral": "Fjällmans Begravning LUNDBY"
+    },
+    {
+      "name": "Johan Beskow",
+      "lifespan": "26 jul 1943 - 26 aug 2023",
+      "city": "Borås",
+      "funeral": "Lenbergs Begravningsbyrå - Borås"
+    },
+    {
+      "name": "Bertil Andersson",
+      "lifespan": "09 apr 1932 - 27 aug 2023",
+      "city": "Nässjö",
+      "funeral": "Steens Begravningsbyrå"
+    },
+    {
+      "name": "Sven-Olof Nilsson",
+      "lifespan": "09 nov 1934 - 24 aug 2023",
+      "city": "Varberg",
+      "funeral": "Hilles & Tornqvists"
+    }
+  ],
+  "amounts": [
+    {
+      "label": "100kr"
+    },
+    {
+      "label": "500kr"
+    },
+    {
+      "label": "1000kr"
+    },
+    {
+      "label": "Eget belopp"
+    }
+  ]
+}

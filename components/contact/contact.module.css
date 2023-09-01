@@ -1,0 +1,125 @@
+.button {
+  display: block;
+  background-color: #f3dcdc;
+  width: 100%;
+  height: 50px;
+  border: none;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button--active {
+  background-color: #01a46d;
+  color: #fff;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-button {
+  position: relative;
+  display: block;
+  height: 50px;
+  font-size: 22px;
+  border: 1px solid #333;
+  margin: 0 auto 30px;
+  padding: 0 50px 0 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.step-button:after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 17px;
+  margin-left: 5px;
+  height: 1.0625rem;
+  width: 1.0625rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://www.hjarnfonden.se/next/images/ArrowLink.svg");
+  filter: invert(68%) sepia(91%) saturate(3225%) hue-rotate(305deg) brightness(101%) contrast(111%);
+}
+
+.textfield {
+  width: 100%;
+  height: 30px;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.step-header {
+  font-weight: normal;
+  font-size: 24px;
+}
+
+.socialnumber {
+  margin-bottom: 40px;
+}
+
+.address-open {
+  display: block;
+}
+
+.address-closed {
+  display: none;
+}
+
+.toggle-open,
+.toggle-closed {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.toggle-open:after {
+  content: '\276F';
+  position: absolute;
+  top: 2px;
+  right: -20px;
+  transform: rotate(90deg);
+}
+
+.toggle-closed:after {
+  content: '\276F';
+  position: absolute;
+  top: 2px;
+  right: -20px;
+  transform: rotate(-90deg);
+}
+
+.agreement {
+  margin-bottom: 30px;
+}
+
+.edit-btn {
+  text-decoration: underline;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.contact-wrapper {
+  margin: 25px 20px;
+}
+
+.contact-info {
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.contact-prefix {
+  font-weight: 500;
+  margin-right: 5px;
+}
