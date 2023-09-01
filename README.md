@@ -12,12 +12,10 @@ Separat modul för respektive steg i checkout flödet.
 Redux kommunicerar mellan moduler
 
 ## Screenshots
-![desktop view](./images/desktop1.png)
-![desktop view](./images/desktop2.png)
-![desktop view](./images/desktop3.png)
-![mobile view](./images/mobile1.png)
-![mobile view](./images/mobile2.png)
-![mobile view](./images/mobile3.png)
-![mobile view](./images/mobile4.png)
-![sanity view](./images/sanity1.png)
-![sanity view](./images/sanity2.png)
+![checkout view](./static/images/checkout1.png)
+![checkout view](./static/images/checkout2.png)
+![checkout view](./static/images/checkout3.png)
+![checkout view](./static/images/checkout4.png)
+![checkout view](./static/images/checkout5.png)
+![checkout view](./static/images/checkout6.png)
+![checkout view](./static/images/checkout7.png)
