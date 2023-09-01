@@ -1,22 +1,4 @@
 {
-  "steps": {
-    "memorial": {
-      "id": 1,
-      "label": "1. Minnesblad"
-    },
-    "amounts": {
-      "id": 2,
-      "label": "2. Gåvobelopp"
-    },
-    "contact": {
-      "id": 3,
-      "label": "3. Kontaktuppgifter"
-    },
-    "payment": {
-      "id": 4,
-      "label": "4. Betalsätt"
-    }
-  },
   "flowers": [
     {
       "file": "ros",

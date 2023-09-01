@@ -100,7 +100,9 @@ const Amount = ({}) => {
               dispatch(
                 setCompletedState({
                   ...isCompleted,
-                  amount: false
+                  amount: false,
+                  contact: false,
+                  payment: false
                 })
               )
             }} className={styles["edit-btn"]}>Ändra</p>

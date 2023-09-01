@@ -151,7 +151,8 @@ const Contact = ({}) => {
             dispatch(
               setCompletedState({
                 ...isCompleted,
-                contact: true
+                contact: true,
+                payment: false
               })
             )
             dispatch(
