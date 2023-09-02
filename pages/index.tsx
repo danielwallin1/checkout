@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     <div style={{ width: "700px", margin: "150px auto"}}>
       <div style={{ display: "flex", position: "relative" }}>
         <Info deceased={deceased} />
-        <Card deceased={deceased} icon={icon} />
+        <Card deceased={deceased} icon={icon} isVisible />
       </div>
       <Amount />
       <Contact />
@@ -35,15 +35,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ params }) => {
       // we can set the initial state from here
-      //await store.dispatch(setAuthState(false));
-
-      console.log("State on server", store.getState());
+      // await store.dispatch(setAuthState(false));
+      // console.log("State on server", store.getState());
 
       return {
-        props: {
-          deceasedState: {},
-          modalState: false
-        },
+        props: {},
       };
     }
 );

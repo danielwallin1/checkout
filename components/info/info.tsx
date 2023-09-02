@@ -1,25 +1,17 @@
-import { setDeceasedState, setIconState, selectIconState, setModalState, setActiveState, selectActiveState, selectCompletedState, setCompletedState } from "../../store/donationSlice";
+import { setDeceasedState, setIconState, selectIconState, setModalState } from "../../store/donationSlice";
+import { setActiveState, selectActiveState, selectCompletedState } from "../../store/stepSlice";
+import { _Deceased } from "../../interfaces/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import data from "../../data/data.json";
 import styles from "./info.module.css";
 
-interface Deceased {
-  deceased: {
-    name: string,
-    lifespan: string,
-    city:string,
-    funeral:string,
-    message:string
-  }
-}
-
-const Info = ({ deceased }: Deceased) => {
+const Info = ({ deceased }:_Deceased) => {
   const dispatch = useDispatch();
   const icon = useSelector(selectIconState);
   const isActive = useSelector(selectActiveState);
   const isCompleted = useSelector(selectCompletedState);
-  const accordionClass = !isActive.info ? "button--active" : "button";
+  const accordionClass = isCompleted.info ? "accordion--active" : "accordion";
   const [name, setName] = useState("");
   const [showDeceasedList, setShowDeceasedList ] = useState(false);
   const [showDeceasedInfo, setShowDeceasedInfo ] = useState(false);
@@ -64,10 +56,6 @@ const Info = ({ deceased }: Deceased) => {
             
         </textarea>
       </div>
-      
-      // <div>
-      //   <p>{donation.message}</p>
-      // </div>
     )
   }
 
@@ -81,7 +69,7 @@ const Info = ({ deceased }: Deceased) => {
           <ul className={styles["name-list"]}>
             {data.persons.map(person => {
               return (
-                <li onClick={event => {
+                <li key={person.name} onClick={event => {
                   event.preventDefault();
                   setName("");
                   setShowDeceasedInfo(true);
@@ -101,7 +89,7 @@ const Info = ({ deceased }: Deceased) => {
                   <p className={styles["person-lifespan"]}>{person.lifespan}, {person.city}</p>
                   <p className={styles["person-funeral"]}>{person.funeral}</p>
                 </div>
-                <button className={styles["choose-btn"]}>Välj</button>
+                <button className={styles["name-list-btn"]}>Välj</button>
                 </li>
               )})}
           </ul>
@@ -117,6 +105,7 @@ const Info = ({ deceased }: Deceased) => {
           const image = require(`../../static/images/${flower.file}.webp`).default.src;
           return (
             <div
+              key={flower.name}
               onClick={() => {
                 dispatch(setIconState(flower.file))
               }}
@@ -159,9 +148,7 @@ const Info = ({ deceased }: Deceased) => {
         {renderFlowers()}
         <button
           className={styles["step-button"]}
-          onClick={event => {
-            dispatch(setModalState(true));
-          }}>
+          onClick={() => { dispatch(setModalState(true)); }}>
           Välj belopp
       </button>
     </div>
@@ -179,7 +166,6 @@ const Info = ({ deceased }: Deceased) => {
 
   return (
     <div className={styles.wrapper}>
-      {console.log(isActive)}
       <button
           className={styles[accordionClass]}
           >
@@ -188,23 +174,8 @@ const Info = ({ deceased }: Deceased) => {
           </h3>
           {!isActive.info &&
             <p onClick={() => {
-              dispatch(
-                setActiveState({
-                  info: true,
-                  amount: false,
-                  contact: false,
-                  payment: false
-                })
-              )
-              dispatch(
-                setCompletedState({
-                  info: false,
-                  amount: false,
-                  contact: false,
-                  payment: false
-                })
-              )
-            }} className={styles["edit-btn"]}>Ändra</p>
+              dispatch(setActiveState("info"))
+            }} className={styles["edit-button"]}>Ändra</p>
           }
       </button>
       {isActive.info && renderSections()}

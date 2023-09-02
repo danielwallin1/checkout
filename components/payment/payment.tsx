@@ -1,14 +1,9 @@
-import { setActiveState, selectActiveState, selectCompletedState, setCompletedState, selectDirtyState } from "../../store/donationSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { selectActiveState } from "../../store/stepSlice";
+import { useSelector } from "react-redux";
 import styles from "./payment.module.css";
 
 const Payment = ({}) => {
-  const dispatch = useDispatch();
   const isActive = useSelector(selectActiveState);
-  const isCompleted = useSelector(selectCompletedState);
-  const isDirty = useSelector(selectDirtyState);
-  const accordionClass = !isActive.payment && isDirty.payment ? "button--active" : "button";
-
 
   function renderPayment() {
     return (
@@ -23,30 +18,11 @@ const Payment = ({}) => {
   return (
     <div>
       <button
-          className={styles[accordionClass]}
+          className={styles.accordion}
           >
           <h3 className={styles["step-header"]}>
             4. Betalsätt
           </h3>
-          {!isActive.payment &&
-            isDirty.payment &&
-            <p onClick={() => {
-              dispatch(
-                setActiveState({
-                  info: false,
-                  amount: false,
-                  contact: false,
-                  payment: true
-                })
-              )
-              dispatch(
-                setCompletedState({
-                  ...isCompleted,
-                  payment: false
-                })
-              )
-            }} className={styles["edit-btn"]}>Ändra</p>
-          }
       </button>
       {isActive.payment && renderPayment()}
     </div>

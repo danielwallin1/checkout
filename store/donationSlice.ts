@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "./store";
-import { HYDRATE } from "next-redux-wrapper";
 
 export interface DonationState {
   deceased: {
@@ -23,10 +22,7 @@ export interface DonationState {
   },
   amount:string,
   icon:string,
-  modal:boolean,
-  active: {},
-  completed: {},
-  dirty: {}
+  modal:boolean
 }
 
 const initialState: DonationState = {
@@ -47,24 +43,6 @@ const initialState: DonationState = {
     email: "",
     phone: "",
     social: ""
-  },
-  active: {
-    info: true,
-    amount: false,
-    contact: false,
-    payment: false
-  },
-  completed: {
-    info: false,
-    amount: false,
-    contact: false,
-    payment: false
-  },
-  dirty: {
-    info: false,
-    amount: false,
-    contact: false,
-    payment: false
   },
   amount: "",
   icon: "ros",
@@ -89,26 +67,8 @@ export const donationSlice = createSlice({
     },
     setModalState(state, action) {
       state.modal = action.payload;
-    },
-    setActiveState(state, action) {
-      state.active = action.payload
-    },
-    setCompletedState(state, action) {
-      state.completed = action.payload
-    },
-    setDirtyState(state, action) {
-      state.completed = action.payload
-    },
-  },
-
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      console.log("HYDRATE", action.payload);
-      return {
-        ...state,
-      };
-    },
-  },
+    }
+  }
 });
 
 export const {
@@ -117,9 +77,6 @@ export const {
   setAmountState,
   setIconState,
   setModalState,
-  setActiveState,
-  setCompletedState,
-  setDirtyState
 } = donationSlice.actions;
 
 export const selectDeceasedState = (state: AppState) => state.donation.deceased;
@@ -127,8 +84,5 @@ export const selectDonatorState = (state: AppState) => state.donation.donator;
 export const selectAmountState = (state: AppState) => state.donation.amount;
 export const selectIconState = (state: AppState) => state.donation.icon;
 export const selectModalState = (state: AppState) => state.donation.modal;
-export const selectActiveState = (state: AppState) => state.donation.active;
-export const selectCompletedState = (state: AppState) => state.donation.completed;
-export const selectDirtyState = (state: AppState) => state.donation.completed;
 
 export default donationSlice.reducer;

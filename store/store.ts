@@ -3,20 +3,32 @@ import {
   combineReducers,
   ThunkAction,
   Action,
+  getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 import { donationSlice } from "./donationSlice";
+import { stepSlice } from "./stepSlice";
 import { createWrapper } from "next-redux-wrapper";
-import { persistReducer, persistStore } from "redux-persist";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER
+} from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   [donationSlice.name]: donationSlice.reducer,
+  [stepSlice.name]: stepSlice.reducer
 });
 
 const makeConfiguredStore = () =>
   configureStore({
     reducer: rootReducer,
-    devTools: true,
+    devTools: true
   });
 
 export const makeStore = () => {
@@ -29,7 +41,7 @@ export const makeStore = () => {
 
     const persistConfig = {
       key: "nextjs",
-      whitelist: ["auth"], // make sure it does not clash with server keys
+      whitelist: ["step", "donation"], // make sure it does not clash with server keys
       storage,
     };
 
@@ -37,6 +49,11 @@ export const makeStore = () => {
     let store: any = configureStore({
       reducer: persistedReducer,
       devTools: process.env.NODE_ENV !== "production",
+      middleware: getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      })
     });
 
     store.__persistor = persistStore(store); // Nasty hack

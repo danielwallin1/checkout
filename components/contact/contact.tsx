@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { setDonatorState, selectDonatorState, setActiveState, selectActiveState, selectCompletedState, setCompletedState, setDirtyState, selectDirtyState } from "../../store/donationSlice";
+import { setDonatorState, selectDonatorState } from "../../store/donationSlice";
+import { setActiveState, selectActiveState, selectCompletedState, selectDirtyState } from "../../store/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./contact.module.css";
 
-const Contact = ({}) => {
+const Contact = () => {
   const dispatch = useDispatch();
   const donator = useSelector(selectDonatorState);
   const isActive = useSelector(selectActiveState);
   const isCompleted = useSelector(selectCompletedState);
-  const isDirty = useSelector(selectDirtyState);
   const [isAddressOpen, setIsAddressOpen] = useState(false);
-  const accordionClass = !isActive.contact && isDirty.contact ? "button--active" : "button";
+  const accordionClass = isCompleted.contact ? "accordion--active" : "accordion";
 
   function renderContact() {
 
@@ -140,28 +140,7 @@ const Contact = ({}) => {
           className={styles["step-button"]}
           onClick={event => {
             event.preventDefault();
-            dispatch(
-              setActiveState({
-                info: false,
-                amount: false,
-                contact: false,
-                payment: true
-              })
-            )
-            dispatch(
-              setCompletedState({
-                ...isCompleted,
-                contact: true,
-                payment: false
-              })
-            )
-            dispatch(
-              setDirtyState({
-                ...isDirty,
-                contact: true,
-                payment: true
-              })
-            )
+            dispatch(setActiveState("payment"))
           }}>
           Välj betalmetod
         </button>
@@ -171,14 +150,14 @@ const Contact = ({}) => {
 
   function renderInfo() {
     return (
-      <div className={styles["contact-wrapper"]}>
-       <p className={styles["contact-info"]}><span className={styles["contact-prefix"]}>Förnamn:</span>{donator.firstname}</p>
-       <p className={styles["contact-info"]}><span className={styles["contact-prefix"]}>Efternamn:</span>{donator.lasttname}</p>
-       <p className={styles["contact-info"]}><span className={styles["contact-prefix"]}>Gatuadress:</span>{donator.street}</p>
-       <p className={styles["contact-info"]}><span className={styles["contact-prefix"]}>Postnummer:</span>{donator.postal}</p>
-       <p className={styles["contact-info"]}><span className={styles["contact-prefix"]}>Postort:</span>{donator.city}</p>
-       <p className={styles["contact-info"]}><span className={styles["contact-prefix"]}>E-post:</span>{donator.email}</p>
-       <p className={styles["contact-info"]}><span className={styles["contact-prefix"]}>Mobiltelefon:</span> {donator.phone}</p>
+      <div className={styles["donator-wrapper"]}>
+       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Förnamn:</span>{donator.firstname}</p>
+       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Efternamn:</span>{donator.lastname}</p>
+       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Gatuadress:</span>{donator.street}</p>
+       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Postnummer:</span>{donator.postal}</p>
+       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Postort:</span>{donator.city}</p>
+       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>E-post:</span>{donator.email}</p>
+       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Mobiltelefon:</span> {donator.phone}</p>
      </div>
    )
   }
@@ -194,21 +173,8 @@ const Contact = ({}) => {
           {!isActive.contact &&
             isCompleted.contact &&
             <p onClick={() => {
-              dispatch(
-                setActiveState({
-                  info: false,
-                  amount: false,
-                  contact: true,
-                  payment: false
-                })
-              )
-              dispatch(
-                setCompletedState({
-                  ...isCompleted,
-                  contact: false
-                })
-              )
-            }} className={styles["edit-btn"]}>Ändra</p>
+              dispatch(setActiveState("contact"))
+            }} className={styles["edit-button"]}>Ändra</p>
           }
       </button>
       {isActive.contact && renderSections()}

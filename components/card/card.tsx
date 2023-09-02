@@ -1,15 +1,8 @@
 import { useEffect } from "react";
+import { _Message } from "../../interfaces/interfaces";
 import styles from "./card.module.css";
 
-interface Deceased {
-  deceased: {
-    name: string,
-    message: string,
-  },
-  icon:string
-}
-
-const Card = ({ deceased, icon }:Deceased) => {
+const Card = ({ deceased, icon }:_Message) => {
   const image = require(`../../static/images/${icon}.webp`).default.src;
 
   useEffect(() => {

@@ -1,14 +1,14 @@
-import { setAmountState, selectAmountState, setActiveState, selectActiveState, selectCompletedState, setCompletedState, setDirtyState, selectDirtyState } from "../../store/donationSlice";
+import { setAmountState, selectAmountState } from "../../store/donationSlice";
+import { setActiveState, selectActiveState, selectCompletedState, selectDirtyState } from "../../store/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
 import data from "../../data/data.json";
 import styles from "./amount.module.css";
 
-const Amount = ({}) => {
+const Amount = () => {
   const dispatch = useDispatch();
   const isActive = useSelector(selectActiveState);
   const isCompleted = useSelector(selectCompletedState);
-  const isDirty = useSelector(selectDirtyState);
-  const accordionClass = !isActive.amount && isDirty.amount ? "button--active" : "button";
+  const accordionClass = isCompleted.amount ? "accordion--active" : "accordion";
   const selected = useSelector(selectAmountState);
 
   function renderAmounts() {
@@ -21,6 +21,7 @@ const Amount = ({}) => {
             
               return (
               <div
+              key={amount.label}
               onClick={event => {
                 dispatch(setAmountState(event.target.innerHTML))
               }}
@@ -42,26 +43,7 @@ const Amount = ({}) => {
           className={styles["step-button"]}
           onClick={event => {
             event.preventDefault();
-            dispatch(
-              setActiveState({
-                info: false,
-                amount: false,
-                contact: true,
-                payment: false
-              })
-            )
-            dispatch(
-              setCompletedState({
-                ...isCompleted,
-                amount: true
-              })
-            )
-            dispatch(
-              setDirtyState({
-                ...isDirty,
-                amount: true
-              })
-            )
+            dispatch(setActiveState("contact"))
           }}>
           Till kontaktuppgifter
         </button>
@@ -88,24 +70,8 @@ const Amount = ({}) => {
           </h3>
           {!isActive.amount &&
             isCompleted.amount &&
-            <p onClick={() => {
-              dispatch(
-                setActiveState({
-                  info: false,
-                  amount: true,
-                  contact: false,
-                  payment: false
-                })
-              )
-              dispatch(
-                setCompletedState({
-                  ...isCompleted,
-                  amount: false,
-                  contact: false,
-                  payment: false
-                })
-              )
-            }} className={styles["edit-btn"]}>Ändra</p>
+            <p onClick={() => { dispatch(setActiveState("amount"))}}
+            className={styles["edit-button"]}>Ändra</p>
           }
       </button>
       {isActive.amount && renderSections()}
