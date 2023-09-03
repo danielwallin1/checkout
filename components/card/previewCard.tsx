@@ -2,7 +2,7 @@ import { _Card } from "../../interfaces/interfaces";
 import styles from "./previewCard.module.css";
 
 const PreviewCard = ({ deceased, icon }:_Card) => {
-  const image = require(`../../static/images/${icon}.webp`).default.src;
+  const image:string = require(`../../static/images/${icon}.webp`).default.src;
 
   return (
     <div className={styles.card}>

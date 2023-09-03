@@ -12,7 +12,7 @@ export interface _Deceased {
     lifespan: string,
     city:string,
     funeral:string,
-    message:string
+    message:string|undefined
   }
 }
 
@@ -57,4 +57,17 @@ export interface _DonationState {
   amount:string,
   icon:string,
   modal:boolean
+}
+
+export interface _Flower {
+  name:string,
+  file:string
+}
+
+export interface _Amount {
+  label:string
+}
+
+export interface _Keyable {
+  [key: string]: any  
 }

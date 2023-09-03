@@ -6,7 +6,7 @@ import styles from "./donationCard.module.css";
 
 const DonationCard = ({ deceased, icon }:_Card) => {
   const dispatch = useDispatch();
-  const image = require(`../../static/images/${icon}.webp`).default.src;
+  const image:string = require(`../../static/images/${icon}.webp`).default.src;
 
   return (
     <div className={styles.wrapper}>

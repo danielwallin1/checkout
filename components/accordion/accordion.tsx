@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { _Accordion } from "../../interfaces/interfaces";
+import { _Accordion, _Keyable } from "../../interfaces/interfaces";
 import styles from "./accordion.module.css";
 
 const Accordion = ({ children, label, name, isActive, isCompleted, action }:_Accordion ) => {
   const dispatch = useDispatch();
-  const active:any = useSelector(isActive);
-  const completed:any = useSelector(isCompleted);
-  const accordionClass = completed[name] ? "accordion--active" : "accordion";
+  const active:_Keyable = useSelector(isActive);
+  const completed:_Keyable = useSelector(isCompleted);
+  const accordionClass:string = completed[name] ? "accordion--active" : "accordion";
 
   return (
     <div className={styles.wrapper}>

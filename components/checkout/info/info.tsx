@@ -1,6 +1,6 @@
 import { setDeceasedState, setIconState, selectIconState, setModalState } from "../../../store/donationSlice";
 import { selectActiveState, selectCompletedState } from "../../../store/stepSlice";
-import { _Deceased } from "../../../interfaces/interfaces";
+import { _Deceased, _Flower, _Keyable } from "../../../interfaces/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import data from "../../../data/data.json";
@@ -8,12 +8,12 @@ import styles from "./info.module.css";
 
 const Info = ({ deceased }:_Deceased) => {
   const dispatch = useDispatch();
-  const icon = useSelector(selectIconState);
-  const isActive = useSelector(selectActiveState);
-  const isCompleted = useSelector(selectCompletedState);
-  const [name, setName] = useState("");
-  const [showDeceasedList, setShowDeceasedList ] = useState(false);
-  const [showDeceasedInfo, setShowDeceasedInfo ] = useState(false);
+  const icon:string = useSelector(selectIconState);
+  const isActive:_Keyable = useSelector(selectActiveState);
+  const isCompleted:_Keyable = useSelector(selectCompletedState);
+  const [name, setName] = useState<string>("");
+  const [showDeceasedList, setShowDeceasedList ] = useState<boolean>(false);
+  const [showDeceasedInfo, setShowDeceasedInfo ] = useState<boolean>(false);
 
   function renderName() {
     return (
@@ -64,7 +64,7 @@ const Info = ({ deceased }:_Deceased) => {
       <div>
         <div className={styles["name-wrapper"]}>
           <ul className={styles["name-list"]}>
-            {data.persons.map(person => {
+            {data.persons.map((person:_Keyable) => {
               return (
                 <li key={person.name} onClick={event => {
                   event.preventDefault();
@@ -100,7 +100,7 @@ const Info = ({ deceased }:_Deceased) => {
       <div>
         <p className={styles.emphasized}>Välj motiv</p>
         <div className={styles.flowers}>
-          {data.flowers.map((flower:any) => {
+          {data.flowers.map((flower:_Flower) => {
             const image = require(`../../../static/images/${flower.file}.webp`).default.src;
             return (
               <div

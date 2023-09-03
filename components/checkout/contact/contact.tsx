@@ -1,23 +1,20 @@
 import { useState } from "react";
 import { setDonatorState, selectDonatorState } from "../../../store/donationSlice";
 import { setActiveState, selectActiveState, selectCompletedState } from "../../../store/stepSlice";
+import { _Keyable } from "../../../interfaces/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./contact.module.css";
 
 const Contact = () => {
   const dispatch = useDispatch();
-  const donator = useSelector(selectDonatorState);
-  const isActive = useSelector(selectActiveState);
-  const isCompleted = useSelector(selectCompletedState);
-  const [isAddressOpen, setIsAddressOpen] = useState(false);
-  const accordionClass = isCompleted.contact ? "accordion--active" : "accordion";
+  const donator:_Keyable = useSelector(selectDonatorState);
+  const isActive:_Keyable = useSelector(selectActiveState);
+  const isCompleted:_Keyable = useSelector(selectCompletedState);
+  const [isAddressOpen, setIsAddressOpen] = useState<boolean>(false);
 
   function renderContact() {
-
-    const toggleClass = isAddressOpen
-      ? "toggle-closed" : "toggle-open";
-    const addressClass = isAddressOpen
-      ? "address-open" : "address-closed";
+    const toggleClass:string = isAddressOpen ? "toggle-closed" : "toggle-open";
+    const addressClass:string = isAddressOpen ? "address-open" : "address-closed";
 
     return (
       <div> 
@@ -151,15 +148,36 @@ const Contact = () => {
   function renderInfo() {
     return (
       <div className={styles["donator-wrapper"]}>
-       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Förnamn:</span>{donator.firstname}</p>
-       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Efternamn:</span>{donator.lastname}</p>
-       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Gatuadress:</span>{donator.street}</p>
-       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Postnummer:</span>{donator.postal}</p>
-       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Postort:</span>{donator.city}</p>
-       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>E-post:</span>{donator.email}</p>
-       <p className={styles["donator-info"]}><span className={styles["donator-prefix"]}>Mobiltelefon:</span> {donator.phone}</p>
-     </div>
-   )
+        <p className={styles["donator-info"]}>
+          <span className={styles["donator-prefix"]}>Förnamn:</span>
+          {donator.firstname}
+        </p>
+        <p className={styles["donator-info"]}>
+          <span className={styles["donator-prefix"]}>Efternamn:</span>
+          {donator.lastname}
+        </p>
+        <p className={styles["donator-info"]}>
+          <span className={styles["donator-prefix"]}>Gatuadress:</span>
+          {donator.street}
+        </p>
+        <p className={styles["donator-info"]}>
+          <span className={styles["donator-prefix"]}>Postnummer:</span>
+          {donator.postal}
+        </p>
+        <p className={styles["donator-info"]}>
+          <span className={styles["donator-prefix"]}>Postort:</span>
+          {donator.city}
+        </p>
+        <p className={styles["donator-info"]}>
+          <span className={styles["donator-prefix"]}>E-post:</span>
+          {donator.email}
+        </p>
+        <p className={styles["donator-info"]}>
+          <span className={styles["donator-prefix"]}>Mobiltelefon:</span>
+          {donator.phone}
+        </p>
+      </div>
+    )
   }
 
   return (

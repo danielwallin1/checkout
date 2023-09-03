@@ -1,5 +1,6 @@
 import { setAmountState, selectAmountState } from "../../../store/donationSlice";
 import { setActiveState, selectActiveState, selectCompletedState } from "../../../store/stepSlice";
+import { _Amount } from "../../../interfaces/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import data from "../../../data/data.json";
 import styles from "./amount.module.css";
@@ -14,20 +15,20 @@ const Amount = () => {
     return (
       <div>
         <div className={styles["amount-wrapper"]}>
-          {data.amounts.map(amount => {
-            const buttonClass = amount.label == selected
+          {data.amounts.map((amount:_Amount) => {
+            const buttonClass:string = amount.label == selected
               ? "amount-label-active" : "amount-label";
             
               return (
               <div
-              key={amount.label}
-              onClick={event => {
-                dispatch(setAmountState(event.target.innerHTML))
-              }}
-              className={styles[buttonClass]}>
-              <span className={styles.amount}>{amount.label}</span>
-            </div>
-            )
+                key={amount.label}
+                onClick={event => {
+                  dispatch(setAmountState((event.target as HTMLElement).innerHTML))
+                }}
+                className={styles[buttonClass]}>
+                <span className={styles.amount}>{amount.label}</span>
+              </div>
+              )
           })}
         </div>
       </div>

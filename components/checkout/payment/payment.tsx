@@ -1,9 +1,10 @@
 import { selectActiveState } from "../../../store/stepSlice";
 import { useSelector } from "react-redux";
+import { _Keyable } from "../../../interfaces/interfaces";
 import styles from "./payment.module.css";
 
 const Payment = ({}) => {
-  const isActive = useSelector(selectActiveState);
+  const isActive:_Keyable = useSelector(selectActiveState);
 
   function renderPayment() {
     return (
