@@ -16,6 +16,7 @@ under första sektionen är bara mockade exempelnamn.
 - validering
 - betalning (formulärsfält)
 - responsiv layout
+- fler återanvändbara komponenter
 
 ## Screenshots
 ![checkout view](./static/images/checkout1.png)

@@ -12,6 +12,7 @@ import DonationCard from "../components/card/donationCard";
 import Modal from "../components/modal/modal";
 import { selectDeceasedState, selectIconState, selectModalState } from "../store/donationSlice";
 import { setActiveState, selectActiveState, selectCompletedState } from "../store/stepSlice";
+import { ReactElement } from "react";
 
 const Home: NextPage = () => {
   const deceased = useSelector(selectDeceasedState);
