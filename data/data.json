@@ -56,5 +56,27 @@
     {
       "label": "Eget belopp"
     }
+  ],
+  "steps": [
+    {
+      "label": "1. Minnesblad",
+      "name": "info",
+      "info": true
+    },
+    {
+      "label": "2. Gåvobelopp",
+      "name": "amount",
+      "amount": true
+    },
+    {
+      "label": "3. Kontaktuppgifter",
+      "name": "contact",
+      "contact": true
+    },
+    {
+      "label": "4. Betalsätt",
+      "name": "payment",
+      "payment":  true
+    }
   ]
 }

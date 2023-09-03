@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { _Deceased } from "../../interfaces/interfaces";
+import { _Message } from "../../interfaces/interfaces";
 import { setModalState } from "../../store/donationSlice";
 import { setActiveState } from "../../store/stepSlice";
 import styles from "./modal.module.css";
 
-const Modal = ({ deceased, icon, isVisible }:_Deceased) => {
+const Modal = ({ deceased, icon, isVisible }:_Message) => {
   const dispatch = useDispatch();
   const image = require(`../../static/images/${icon}.webp`).default.src;
 

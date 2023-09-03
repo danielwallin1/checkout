@@ -1,9 +1,9 @@
-import { setDeceasedState, setIconState, selectIconState, setModalState } from "../../store/donationSlice";
-import { setActiveState, selectActiveState, selectCompletedState } from "../../store/stepSlice";
-import { _Deceased } from "../../interfaces/interfaces";
+import { setDeceasedState, setIconState, selectIconState, setModalState } from "../../../store/donationSlice";
+import { selectActiveState, selectCompletedState } from "../../../store/stepSlice";
+import { _Deceased } from "../../../interfaces/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import data from "../../data/data.json";
+import data from "../../../data/data.json";
 import styles from "./info.module.css";
 
 const Info = ({ deceased }:_Deceased) => {
@@ -11,7 +11,6 @@ const Info = ({ deceased }:_Deceased) => {
   const icon = useSelector(selectIconState);
   const isActive = useSelector(selectActiveState);
   const isCompleted = useSelector(selectCompletedState);
-  const accordionClass = isCompleted.info ? "accordion--active" : "accordion";
   const [name, setName] = useState("");
   const [showDeceasedList, setShowDeceasedList ] = useState(false);
   const [showDeceasedInfo, setShowDeceasedInfo ] = useState(false);
@@ -26,7 +25,7 @@ const Info = ({ deceased }:_Deceased) => {
           minnesbladet direkt till
           begravningsbyrån.
         </p>
-        <p>Den avlidnes namn:</p>
+        <p className={styles.emphasized}>Den avlidnes namn:</p>
         <input
           type="text"
           onFocus={() => {
@@ -48,19 +47,17 @@ const Info = ({ deceased }:_Deceased) => {
   function renderMessage() {
     return (
       <div>
-        <p>Skriv en hälsning och ditt/era namn</p>
+        <p className={styles.emphasized}>Skriv en hälsning och ditt/era namn</p>
         <textarea
           onChange={event => dispatch(setDeceasedState({ ...deceased, message: event.target.value }))}
           className={styles.textarea}
-          placeholder="Hälsning på minnesblad">
-            
+          placeholder="Hälsning på minnesblad">   
         </textarea>
       </div>
     )
   }
 
   function renderDeceasedList() {
-
     return (
       name.length > 2 &&
       showDeceasedList &&
@@ -100,26 +97,29 @@ const Info = ({ deceased }:_Deceased) => {
 
   function renderFlowers() {
     return (
-      <div className={styles.flowers}>
-        {data.flowers.map((flower:any) => {
-          const image = require(`../../static/images/${flower.file}.webp`).default.src;
-          return (
-            <div
-              key={flower.name}
-              onClick={() => {
-                dispatch(setIconState(flower.file))
-              }}
-              >
-              <img
-                className={flower.file === icon
-                  ? styles['flower-active']
-                  : styles['flower']}
-                src={String(image)}
-                alt="flower"/>
-              <p className={styles.flowername}>{flower.name}</p>
-            </div>
-          )
-        })}
+      <div>
+        <p className={styles.emphasized}>Välj motiv</p>
+        <div className={styles.flowers}>
+          {data.flowers.map((flower:any) => {
+            const image = require(`../../../static/images/${flower.file}.webp`).default.src;
+            return (
+              <div
+                key={flower.name}
+                onClick={() => {
+                  dispatch(setIconState(flower.file))
+                }}
+                >
+                <img
+                  className={flower.file === icon
+                    ? styles['flower-active']
+                    : styles['flower']}
+                  src={String(image)}
+                  alt="flower"/>
+                <p className={styles.flowername}>{flower.name}</p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
@@ -166,18 +166,6 @@ const Info = ({ deceased }:_Deceased) => {
 
   return (
     <div className={styles.wrapper}>
-      <button
-          className={styles[accordionClass]}
-          >
-          <h3 className={styles["step-header"]}>
-            1. Minnesblad
-          </h3>
-          {!isActive.info &&
-            <p onClick={() => {
-              dispatch(setActiveState("info"))
-            }} className={styles["edit-button"]}>Ändra</p>
-          }
-      </button>
       {isActive.info && renderSections()}
       {isCompleted.info && renderInfo()}
     </div>

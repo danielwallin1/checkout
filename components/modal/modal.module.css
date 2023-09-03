@@ -2,8 +2,8 @@
 
 .wrapper {
   position: absolute;
-  transform: translate(calc(50% - 225px), 100px);
-  top: 0;
+  top: -60px;
+  left: 70px;
 }
 
 .overlay {

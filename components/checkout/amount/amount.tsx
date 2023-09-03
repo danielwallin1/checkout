@@ -1,14 +1,13 @@
-import { setAmountState, selectAmountState } from "../../store/donationSlice";
-import { setActiveState, selectActiveState, selectCompletedState, selectDirtyState } from "../../store/stepSlice";
+import { setAmountState, selectAmountState } from "../../../store/donationSlice";
+import { setActiveState, selectActiveState, selectCompletedState, selectDirtyState } from "../../../store/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
-import data from "../../data/data.json";
+import data from "../../../data/data.json";
 import styles from "./amount.module.css";
 
 const Amount = () => {
   const dispatch = useDispatch();
   const isActive = useSelector(selectActiveState);
   const isCompleted = useSelector(selectCompletedState);
-  const accordionClass = isCompleted.amount ? "accordion--active" : "accordion";
   const selected = useSelector(selectAmountState);
 
   function renderAmounts() {
@@ -61,19 +60,7 @@ const Amount = () => {
   }
 
   return (
-    <div>
-      <button
-          className={styles[accordionClass]}
-          >
-          <h3 className={styles["step-header"]}>
-            2. Gåvobelopp
-          </h3>
-          {!isActive.amount &&
-            isCompleted.amount &&
-            <p onClick={() => { dispatch(setActiveState("amount"))}}
-            className={styles["edit-button"]}>Ändra</p>
-          }
-      </button>
+    <div className={styles.wrapper}>
       {isActive.amount && renderSections()}
       {isCompleted.amount && renderInfo()}
     </div>

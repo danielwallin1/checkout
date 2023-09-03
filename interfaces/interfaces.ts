@@ -16,3 +16,12 @@ export interface _Deceased {
     message:string
   }
 }
+
+export interface _Accordion {
+  children: string | JSX.Element | JSX.Element[],
+  label:string,
+  name:string,
+  isActive:any,
+  isCompleted:any,
+  action:any
+}

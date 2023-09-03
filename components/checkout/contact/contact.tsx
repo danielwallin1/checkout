@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { setDonatorState, selectDonatorState } from "../../store/donationSlice";
-import { setActiveState, selectActiveState, selectCompletedState, selectDirtyState } from "../../store/stepSlice";
+import { setDonatorState, selectDonatorState } from "../../../store/donationSlice";
+import { setActiveState, selectActiveState, selectCompletedState, selectDirtyState } from "../../../store/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./contact.module.css";
 
@@ -163,20 +163,7 @@ const Contact = () => {
   }
 
   return (
-    <div>
-       <button
-          className={styles[accordionClass]}
-          >
-          <h3 className={styles["step-header"]}>
-            3. Kontaktuppgifter
-          </h3>
-          {!isActive.contact &&
-            isCompleted.contact &&
-            <p onClick={() => {
-              dispatch(setActiveState("contact"))
-            }} className={styles["edit-button"]}>Ändra</p>
-          }
-      </button>
+    <div className={styles.wrapper}>
       {isActive.contact && renderSections()}
       {isCompleted.contact && renderInfo()}
     </div>

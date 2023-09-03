@@ -1,4 +1,4 @@
-import { selectActiveState } from "../../store/stepSlice";
+import { selectActiveState } from "../../../store/stepSlice";
 import { useSelector } from "react-redux";
 import styles from "./payment.module.css";
 
@@ -16,14 +16,7 @@ const Payment = ({}) => {
   }
 
   return (
-    <div>
-      <button
-          className={styles.accordion}
-          >
-          <h3 className={styles["step-header"]}>
-            4. Betalsätt
-          </h3>
-      </button>
+    <div className={styles.wrapper}>
       {isActive.payment && renderPayment()}
     </div>
   )

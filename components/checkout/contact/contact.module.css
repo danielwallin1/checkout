@@ -1,9 +1,9 @@
-.accordion { composes: accordion from "../../styles/shared.css"; }
-.accordion--active { composes: accordion--active from "../../styles/shared.css"; }
-.step-button { composes: step-button from "../../styles/shared.css"; }
-.step-header { composes: step-header from "../../styles/shared.css"; }
-.textfield { composes: textfield from "../../styles/shared.css"; }
-.edit-button { composes: edit-button from "../../styles/shared.css"; }
+.accordion { composes: accordion from "../../../styles/shared.css"; }
+.accordion--active { composes: accordion--active from "../../../styles/shared.css"; }
+.step-button { composes: step-button from "../../../styles/shared.css"; }
+.step-header { composes: step-header from "../../../styles/shared.css"; }
+.textfield { composes: textfield from "../../../styles/shared.css"; }
+.edit-button { composes: edit-button from "../../../styles/shared.css"; }
 
 .step-button:after {
   content: "";
