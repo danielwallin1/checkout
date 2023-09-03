@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { setDonatorState, selectDonatorState } from "../../../store/donationSlice";
-import { setActiveState, selectActiveState, selectCompletedState, selectDirtyState } from "../../../store/stepSlice";
+import { setActiveState, selectActiveState, selectCompletedState } from "../../../store/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./contact.module.css";
 

@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import { wrapper } from "../store/store";
 import data from "../data/data.json";
 import Accordion from "../components/accordion/accordion";
-import Card from "../components/card/card";
+import PreviewCard from "../components/card/previewCard";
 import Info from "../components/checkout/info/info";
 import Amount from "../components/checkout/amount/amount";
 import Contact from "../components/checkout/contact/contact";
 import Payment from "../components/checkout/payment/payment";
+import DonationCard from "../components/card/donationCard";
 import Modal from "../components/modal/modal";
 import { selectDeceasedState, selectIconState, selectModalState } from "../store/donationSlice";
 import { setActiveState, selectActiveState, selectCompletedState } from "../store/stepSlice";
@@ -36,8 +37,10 @@ const Home: NextPage = () => {
             {isInfo && 
               <div style={{ display: "flex", position: "relative" }}>
                 <Info deceased={deceased}/>
-                <Card deceased={deceased} icon={icon} isVisible />
-                <Modal deceased={deceased} icon={icon} isVisible={isVisible} />
+                <PreviewCard deceased={deceased} icon={icon} />
+                <Modal isVisible={isVisible}>
+                  <DonationCard deceased={deceased} icon={icon} />
+                </Modal>
               </div>
             }
             {isAmount && <Amount />}

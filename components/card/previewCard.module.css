@@ -1,4 +1,13 @@
-.logo { composes: logo from "../../styles/shared.css"; }
+.logo {
+  width: 170px;
+  height: 50px;
+  bottom: 40px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  margin: auto;
+  bottom: 30px;
+}
 
 .card {
   position: absolute;

@@ -1,12 +1,8 @@
-import { useEffect } from "react";
-import { _Message } from "../../interfaces/interfaces";
-import styles from "./card.module.css";
+import { _Card } from "../../interfaces/interfaces";
+import styles from "./previewCard.module.css";
 
-const Card = ({ deceased, icon }:_Message) => {
+const PreviewCard = ({ deceased, icon }:_Card) => {
   const image = require(`../../static/images/${icon}.webp`).default.src;
-
-  useEffect(() => {
-  }, [deceased]);
 
   return (
     <div className={styles.card}>
@@ -22,9 +18,9 @@ const Card = ({ deceased, icon }:_Message) => {
           </div>
         </div>
       </div>
-      <div className={styles.logo}></div>
+      <img className={styles.logo} src="https://www.hjarnfonden.se/next/images/hjarnfonden-logo.svg" alt="logo" />
     </div>
   )
 };
 
-export default Card;
+export default PreviewCard;

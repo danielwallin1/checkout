@@ -8,13 +8,9 @@ const Accordion = ({ children, label, name, isActive, isCompleted, action }:_Acc
   const completed:any = useSelector(isCompleted);
   const accordionClass = completed[name] ? "accordion--active" : "accordion";
 
-  console.log(active[name], name, active)
-
   return (
     <div className={styles.wrapper}>
-      <button
-          className={styles[accordionClass]}
-          >
+      <button className={styles[accordionClass]}>
           <h3 className={styles["step-header"]}>
             {label}
           </h3>

@@ -1,0 +1,86 @@
+.logo {
+  width: 200px;
+  height: 50px;
+  bottom: 40px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  margin: auto;
+  bottom: 10px;
+}
+
+.wrapper {
+  position: absolute;
+  top: -60px;
+  left: 70px;
+}
+
+.card {
+  width: 550px;
+  background-color: #fff;
+  padding: 40px 20px;
+  height: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  height: 70%;
+  border: 1px solid #aaa;
+}
+
+.card-name {
+  font-size: 26px;
+}
+
+.card-info {
+  font-size: 16px;
+  padding: 0 80px;
+}
+
+.card-message {
+  margin-top: 20px;
+}
+
+.icon {
+  margin-top: 30px;
+  width: 150px;
+}
+
+.content {
+  text-align: center;
+}
+
+.agreement-wrapper {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.agreement-btn {
+  background-color: #d3f1e8;
+  position: relative;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  padding: 0 50px 0 20px;
+  border: none;
+}
+
+.agreement-btn:after {
+  content: '';
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  background-image: url("https://www.hjarnfonden.se/next/images/ArrowLink.svg");
+  height: 1.0625rem;
+  width: 1.0625rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  filter: invert(68%) sepia(91%) saturate(3225%) hue-rotate(305deg) brightness(101%) contrast(111%);
+}
+
+.edit {
+  font-size: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+}

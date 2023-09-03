@@ -1,10 +1,9 @@
-export interface _Message {
+export interface _Card {
   deceased: {
     name: string,
     message: string,
   },
   icon:string,
-  isVisible:boolean
 }
 
 export interface _Deceased {
@@ -24,4 +23,38 @@ export interface _Accordion {
   isActive:any,
   isCompleted:any,
   action:any
+}
+
+export interface _Modal {
+  children: string | JSX.Element | JSX.Element[],
+  isVisible:boolean
+}
+
+export interface _StepState {
+  active: {},
+  completed: {}
+}
+
+export interface _DonationState {
+  deceased: {
+    name:string,
+    lifespan:string,
+    city:string,
+    message:string,
+    funeral:string
+  },
+  donator: {
+    firstname:string,
+    lastname:string,
+    address:string,
+    street:string,
+    postal:string,
+    city:string,
+    email:string,
+    phone:string,
+    social:string
+  },
+  amount:string,
+  icon:string,
+  modal:boolean
 }

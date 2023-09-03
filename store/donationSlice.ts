@@ -1,31 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "./store";
+import { _DonationState } from "../interfaces/interfaces";
 
-export interface DonationState {
-  deceased: {
-    name:string,
-    lifespan:string,
-    city:string,
-    message:string,
-    funeral:string
-  },
-  donator: {
-    firstname:string,
-    lastname:string,
-    address:string,
-    street:string,
-    postal:string,
-    city:string,
-    email:string,
-    phone:string,
-    social:string
-  },
-  amount:string,
-  icon:string,
-  modal:boolean
-}
-
-const initialState: DonationState = {
+const initialState: _DonationState = {
   deceased: {
     name: '',
     lifespan: '',

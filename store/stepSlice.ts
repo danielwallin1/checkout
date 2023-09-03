@@ -1,13 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { _StepState } from "../interfaces/interfaces";
 import { AppState } from "./store";
 
-export interface StepState {
-  active: {},
-  completed: {},
-  dirty: {}
-}
-
-const initialState: StepState = {
+const initialState: _StepState = {
   active: {
     info: true,
     amount: false,
@@ -15,12 +10,6 @@ const initialState: StepState = {
     payment: false
   },
   completed: {
-    info: false,
-    amount: false,
-    contact: false,
-    payment: false
-  },
-  dirty: {
     info: false,
     amount: false,
     contact: false,
@@ -48,11 +37,6 @@ export const stepSlice = createSlice({
             contact: false,
             payment: false
           }
-
-          state.dirty = {
-            ...state.dirty,
-            info: true
-          }
         break;
         case "amount":
           state.active = {
@@ -67,11 +51,6 @@ export const stepSlice = createSlice({
             amount: false,
             contact: false,
             payment: false
-          }
-
-          state.dirty = {
-            ...state.dirty,
-            amount: true
           }
         break;
         case "contact":
@@ -88,11 +67,6 @@ export const stepSlice = createSlice({
             contact: false,
             payment: false
           }
-
-          state.dirty = {
-            ...state.dirty,
-            contact: true
-          }
         break;
         case "payment":
           state.active = {
@@ -108,11 +82,6 @@ export const stepSlice = createSlice({
             contact: true,
             payment: false
           }
-
-          state.dirty = {
-            ...state.dirty,
-            payment: true
-          }
       }
     }
   }
@@ -124,6 +93,5 @@ export const {
 
 export const selectActiveState = (state: AppState) => state.step.active;
 export const selectCompletedState = (state: AppState) => state.step.completed;
-export const selectDirtyState = (state: AppState) => state.step.dirty;
 
 export default stepSlice.reducer;
