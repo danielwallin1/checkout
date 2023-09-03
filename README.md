@@ -9,7 +9,8 @@ Checkout flöde för hjärnfonden.
 
 ## Implementation
 Separat modul för respektive steg i checkout flödet.
-Redux kommunicerar mellan moduler
+Redux kommunicerar mellan moduler. Lista med personer
+under första sektionen är bara mockade exempelnamn.
 
 ## Ej implementerat (för att hålla nere scope)
 - validering
